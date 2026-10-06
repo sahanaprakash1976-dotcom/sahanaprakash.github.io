@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sahana Prakash | Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated background */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#2563eb;
+    filter:blur(180px);
+    opacity:0.25;
+    top:-150px;
+    left:-150px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#9333ea;
+    filter:blur(180px);
+    opacity:0.20;
+    bottom:-150px;
+    right:-150px;
+    z-index:-1;
+}
+
+/* Navigation */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,8,22,0.75);
+    backdrop-filter:blur(15px);
+    z-index:1000;
+}
+
+nav h2{
+    color:#60a5fa;
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:120px 8% 60px;
+    gap:60px;
+}
+
+.hero-text{
+    max-width:600px;
+}
+
+.hero-text h1{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.hero-text h1 span{
+    color:#60a5fa;
+}
+
+.hero-text h3{
+    color:#cbd5e1;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    color:#94a3b8;
+    line-height:1.8;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 25px;
+    margin-right:10px;
+    border-radius:30px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(37,99,235,0.4);
+}
+
+.btn2{
+    background:transparent;
+    border:1px solid #60a5fa;
+}
+
+/* 3D PHOTO */
+
+.photo-container{
+    perspective:1000px;
+}
+
+.photo-card{
+    width:300px;
+    height:380px;
+    position:relative;
+    transform-style:preserve-3d;
+    animation:float 4s ease-in-out infinite;
+}
+
+.photo-card::before{
+    content:"";
+    position:absolute;
+    inset:-15px;
+    border:2px solid #60a5fa;
+    border-radius:25px;
+    transform:translateZ(-30px);
+    box-shadow:0 0 40px #2563eb;
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:25px;
+    border:3px solid #60a5fa;
+    box-shadow:0 30px 70px rgba(0,0,0,0.6);
+    transform:translateZ(40px);
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:rotateY(-8deg) rotateX(5deg) translateY(0);
+    }
+
+    50%{
+        transform:rotateY(8deg) rotateX(-5deg) translateY(-20px);
+    }
+
+}
+
+/* Sections */
+
+section{
+    min-height:100vh;
+    padding:110px 8%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:50px;
+    color:#60a5fa;
+}
+
+/* About */
+
+.about{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+}
+
+.about p{
+    color:#cbd5e1;
+    font-size:18px;
+    line-height:2;
+}
+
+/* Skills */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.skill{
+    padding:18px 28px;
+    border:1px solid #334155;
+    border-radius:15px;
+    background:rgba(15,23,42,0.8);
+    transition:0.5s;
+}
+
+.skill:hover{
+    transform:translateY(-10px) rotateX(10deg);
+    border-color:#60a5fa;
+    box-shadow:0 15px 35px rgba(37,99,235,0.3);
+}
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.project{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(15,23,42,0.75);
+    border:1px solid #334155;
+    transition:0.5s;
+    transform-style:preserve-3d;
+}
+
+.project:hover{
+    transform:perspective(800px) rotateX(6deg) rotateY(-6deg) translateY(-10px);
+    border-color:#60a5fa;
+    box-shadow:0 25px 50px rgba(0,0,0,0.4);
+}
+
+.project h3{
+    color:#60a5fa;
+    margin-bottom:15px;
+}
+
+.project p{
+    color:#94a3b8;
+    line-height:1.7;
+}
+
+.project .tech{
+    margin-top:15px;
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+/* Education */
+
+.education-box{
+    max-width:750px;
+    margin:auto;
+    padding:35px;
+    border-radius:20px;
+    background:rgba(15,23,42,0.8);
+    border-left:5px solid #60a5fa;
+}
+
+.education-box h3{
+    color:#60a5fa;
+    margin-bottom:15px;
+}
+
+.education-box p{
+    color:#cbd5e1;
+    margin:8px 0;
+}
+
+/* Achievements */
+
+.achievements{
+    max-width:800px;
+    margin:auto;
+}
+
+.achievement{
+    padding:20px;
+    margin:15px 0;
+    background:rgba(15,23,42,0.8);
+    border-radius:15px;
+    border:1px solid #334155;
+    transition:0.4s;
+}
+
+.achievement:hover{
+    transform:translateX(15px);
+    border-color:#60a5fa;
+}
+
+/* Contact */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    margin:20px;
+    color:#cbd5e1;
+}
+
+.contact a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#020617;
+    color:#64748b;
+}
+
+/* Mobile */
+
+@media(max-width:800px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:130px;
+    }
+
+    .hero-text h1{
+        font-size:40px;
+    }
+
+    .photo-card{
+        width:250px;
+        height:320px;
+    }
+
+    section{
+        padding:100px 6%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<h2>Sahana.</h2>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#skills">Skills</a></li>
+
+<li><a href="#projects">Projects</a></li>
+
+<li><a href="#education">Education</a></li>
+
+<li><a href="#achievements">Achievements</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>
+Hi, I'm <span>Sahana Prakash</span>
+</h1>
+
+<h3>
+3rd Year B.E. Electronics & Communication Engineering Student
+</h3>
+
+<p>
+I am an ECE student exploring Artificial Intelligence,
+Machine Learning, Embedded Systems and innovative
+technology solutions.
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="btn">
+Explore My Work
+</a>
+
+<a href="#contact" class="btn btn2">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+
+<!-- 3D PHOTO -->
+
+<div class="photo-container">
+
+<div class="photo-card">
+
+<img src="profile.jpg" alt="Sahana Prakash">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="title">
+About Me
+</h2>
+
+<div class="about">
+
+<p>
+I am a third-year B.E. Electronics and Communication
+Engineering student at Sri Sairam College of Engineering.
+My interests include AI/ML, signal processing, embedded
+systems and electronics.
+</p>
+
+<br>
+
+<p>
+I enjoy developing technology-based solutions and
+participating in hackathons and technical projects where
+electronics and intelligent systems can be combined to
+solve real-world problems.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2 class="title">
+My Skills
+</h2>
+
+<div class="skills">
+
+<div class="skill">Python</div>
+
+<div class="skill">C Programming</div>
+
+<div class="skill">MATLAB</div>
+
+<div class="skill">Artificial Intelligence</div>
+
+<div class="skill">Machine Learning</div>
+
+<div class="skill">Embedded Systems</div>
+
+<div class="skill">8051 Microcontroller</div>
+
+<div class="skill">Arduino</div>
+
+<div class="skill">Signal Processing</div>
+
+<div class="skill">Git & GitHub</div>
+
+<div class="skill">Figma</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="title">
+My Projects
+</h2>
+
+<div class="projects">
+
+
+<div class="project">
+
+<h3>
+AI/ML Adaptive Noise Cancellation
+</h3>
+
+<p>
+AI/ML-enabled adaptive noise cancellation system
+designed to suppress stationary, non-stationary and
+impulsive defence noises while maintaining speech
+intelligibility.
+</p>
+
+<div class="tech">
+AI/ML • Signal Processing • Embedded Systems
+</div>
+
+</div>
+
+
+<div class="project">
+
+<h3>
+Urban Heat Mitigation App
+</h3>
+
+<p>
+A technology-based solution focused on identifying
+urban heat conditions and supporting effective
+urban heat mitigation strategies.
+</p>
+
+<div class="tech">
+AI • Data Analysis • App Development
+</div>
+
+</div>
+
+
+<div class="project">
+
+<h3>
+HIMANKU-LITE
+</h3>
+
+<p>
+A hardware-oriented Smart India Hackathon solution
+combining electronics, sensors and intelligent
+technology.
+</p>
+
+<div class="tech">
+Embedded Systems • Sensors • AI
+</div>
+
+</div>
+
+
+<div class="project">
+
+<h3>
+MATLAB Signal Processing
+</h3>
+
+<p>
+MATLAB-based audio signal analysis using time-domain
+representation and frequency spectrum analysis.
+</p>
+
+<div class="tech">
+MATLAB • Signal Processing
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+<h2 class="title">
+Education
+</h2>
+
+<div class="education-box">
+
+<h3>
+B.E. Electronics & Communication Engineering
+</h3>
+
+<p>
+Sri Sairam College of Engineering
+</p>
+
+<p>
+3rd Year
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements">
+
+<h2 class="title">
+Achievements & Activities
+</h2>
+
+<div class="achievements">
+
+<div class="achievement">
+🏆 Participated in Smart India Hackathon
+</div>
+
+<div class="achievement">
+🚀 Worked on AI/ML and embedded systems projects
+</div>
+
+<div class="achievement">
+💡 Participated in technical activities and hackathons
+</div>
+
+<div class="achievement">
+📚 Developed academic projects in Electronics and MATLAB
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="title">
+Let's Connect
+</h2>
+
+<div class="contact">
+
+<p>
+📧
+<a href="mailto:Sahanaprakash1976@gmail.com">
+Sahanaprakash1976@gmail.com
+</a>
+</p>
+
+<p>
+💼
+<a href="https://www.linkedin.com/" target="_blank">
+LinkedIn
+</a>
+</p>
+
+<p>
+💻
+<a href="https://github.com/" target="_blank">
+GitHub
+</a>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Sahana Prakash • ECE Portfolio
+
+</footer>
+
+
+</body>
+
+</html>
